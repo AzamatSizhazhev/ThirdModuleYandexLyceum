@@ -1,16 +1,28 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from yandex_testing_lesson import is_palindrome
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def test_is_palindrome():
+    test_data = (
+        ('', True),
+        ('a', True),
+        ('aa', True),
+        ('Aa', False),
+        ('fg', False),
+        ('ada', True),
+        ('Ada', False),
+        ('AdA', True),
+        ('uia', False),
+        ('asdfdsa', True),
+        ('ipwubtg', False),
+        ('AsDfDsA', True)
+    )
+
+    for input_data, correct_output_data in test_data:
+        output_data = is_palindrome(input_data)
+        if output_data != correct_output_data:
+            return 'NO'
+
+    return 'YES'
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(test_is_palindrome())
