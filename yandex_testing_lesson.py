@@ -1,6 +1,21 @@
 def is_prime(n):
-    counter = 0
-    for i in range(2, n):
-        if n % i != 0:
-            counter += 1
-    return counter == n - 2
+    if type(n) != int:
+        raise TypeError
+    if n < 2:
+        raise ValueError
+    for divisor in range(2, int(n ** 0.5) + 1):
+        if n % divisor == 0:
+            return False
+    return True
+
+
+if __name__ == '__main__':
+    num = input()
+    try:
+        num = int(num)
+        if is_prime(num):
+            print('YES')
+        else:
+            print('NO')
+    except ValueError or TypeError:
+        print('NO')
