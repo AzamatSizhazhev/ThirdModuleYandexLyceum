@@ -76,7 +76,7 @@
 # #     myzip.write('test.txt')
 # #     print(myzip.namelist())
 #
-# # # Вытаскивает из рхива все содержимое в указанную папку
+# # # Вытаскивает из архива все содержимое в указанную папку
 # # with ZipFile('archive.zip') as myzip:
 # #     myzip.extractall(path='unpack_zip', members=None, pwd=None)
 # # # Если указать path=None, то скопируется в текущую папку
