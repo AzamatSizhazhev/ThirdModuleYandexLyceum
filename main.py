@@ -1,15 +1,19 @@
-import sys
-import json
+from zipfile import ZipFile
 
-verdict = list(map(lambda x: x.strip(), list(sys.stdin)))
 
-with open('scoring.json') as cat_file:
-    data = json.load(cat_file)['scoring']
+def human_read_format(size):
+    names = ['Б', 'КБ', 'МБ', 'ГБ']
+    counter = 0
+    while size >= 1024:
+        size /= 1024
+        counter += 1
+    return f'{round(size)}{names[counter]}'
 
-amount = 0
-for elem in data:
-    for test in elem['required_tests']:
-        if verdict[test - 1] == 'ok':
-            amount += elem['points'] / len(elem['required_tests'])
 
-print(int(amount))
+with ZipFile('input.zip') as myzip:
+    for elem in myzip.filelist:
+        if elem.filename[-1] == '/':
+            print('  ' * (elem.filename.count('/') - 1) + elem.filename.split('/')[-2])
+        else:
+            print('  ' * elem.filename.count('/') + elem.filename.split('/')[-1] + ' ' + human_read_format(
+                elem.file_size))
