@@ -1,8 +1,15 @@
-from zipfile import ZipFile
+import sys
+import json
 
-with ZipFile('input.zip') as myzip:
-    for elem in myzip.filelist[1:]:
-        if elem.filename[-1] == '/':
-            print('  ' * (elem.filename.count('/') - 2) + elem.filename.split('/')[-2])
-        else:
-            print('  ' * elem.filename.count('/') + elem.filename.split('/')[-1])
+verdict = list(map(lambda x: x.strip(), list(sys.stdin)))
+
+with open('scoring.json') as cat_file:
+    data = json.load(cat_file)['scoring']
+
+amount = 0
+for elem in data:
+    for test in elem['required_tests']:
+        if verdict[test - 1] == 'ok':
+            amount += elem['points'] / len(elem['required_tests'])
+
+print(int(amount))
