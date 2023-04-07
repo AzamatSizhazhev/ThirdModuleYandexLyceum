@@ -1,28 +1,34 @@
 import os
 import sys
-# import pygame
+import pygame
 import requests
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 
-# Выполнение запроса get
-# response = requests.get(
-#     'http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json')
+# # Выполнение запроса get
+# response = requests.get('http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json')
 # print(response, type(response))
-
-# Простейшая программа, выполняющая запрос к серверу, анализирующая код ответа и в случае успешного запроса
-# печатающая полученную страницу # Правильный geocoder_request =
-# 'http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json' #
-# Неправильный # geocoder_request = 'http://geocode-maps.yandex.ru/1.x.1/?apikey=40d1649f-0493-4b70-98ba-98533de7710b
-# &geocode=Якутск&format=json' response = requests.get(geocoder_request) if response: print(response.content) else:
-# print('Ошибка выполнения запроса') print(geocoder_request) print('Http статус', response.status_code, '(',
-# response.reason, ')')
-
-# # Получить json запроса geocoder_request =
-# "http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json"
-# response = requests.get(geocoder_request) if response: # Преобразуем ответ в json-объект json_response =
-# response.json()
 #
+# # Простейшая программа, выполняющая запрос к серверу, анализирующая код ответа и в случае успешного запроса
+# # печатающая полученную страницу
+# # Правильный
+# geocoder_request = 'http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json'
+# # Неправильный
+# # geocoder_request = 'http://geocode-maps.yandex.ru/1.x.1/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json'
+# response = requests.get(geocoder_request)
+# if response:
+#     print(response.content)
+# else:
+#     print('Ошибка выполнения запроса')
+#     print(geocoder_request)
+#     print('Http статус', response.status_code, '(', response.reason, ')')
+#
+# # Получить json запроса
+# geocoder_request = "http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&geocode=Якутск&format=json"
+# response = requests.get(geocoder_request)
+# if response:
+#     # Преобразуем ответ в json-объект
+#     json_response = response.json()
 #     # Получаем первый топоним из ответа геокодера.
 #     # Согласно описанию ответа, он находится по следующему пути:
 #     toponym = json_response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
@@ -36,7 +42,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 #     print("Ошибка выполнения запроса:")
 #     print(geocoder_request)
 #     print("Http статус:", response.status_code, "(", response.reason, ")")
-
+#
 # # Static API на окне Pygame
 # map_request = 'http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn=0.002,0.002&l=map'
 # response = requests.get(map_request)
@@ -61,7 +67,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 #         pass
 #     pygame.quit()
 # os.remove(map_file)
-
+#
 # # Static API в окне PyQt
 # SCREEN_SIZE = [600, 450]
 #
